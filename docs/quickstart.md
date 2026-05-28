@@ -63,10 +63,12 @@ Compare VCF calls:
 python3 -m biocompare compare tests/fixtures/calls_a.vcf tests/fixtures/calls_b.vcf --type vcf
 ```
 
-The VCF comparator currently uses raw `CHROM/POS/REF/ALT` keys. It reports
-variant Jaccard, sample overlap, genotype concordance, allele-frequency
-correlation, and Ti/Tv ratio similarity. Normalize and split multiallelic VCFs
-upstream when exact representation differences should not count as discordance.
+The VCF comparator splits multiallelic ALT alleles and trims shared prefix/suffix
+bases before comparing normalized `CHROM/POS/REF/ALT` keys. It reports variant
+Jaccard, sample overlap, allele-specific genotype concordance, allele-frequency
+correlation, and Ti/Tv ratio similarity. Reference-based left alignment is not
+performed, so normalize against a reference upstream when complex indel
+representation differences matter.
 
 Compare alignment summary statistics:
 

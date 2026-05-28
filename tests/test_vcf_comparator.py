@@ -66,3 +66,49 @@ class VCFComparatorTests(TestCase):
         self.assertEqual(report.comparator, "VCFComparator")
         self.assertIn("variant_jaccard", report.metrics)
 
+    def test_multiallelic_records_are_split_for_comparison(self):
+        with TemporaryDirectory() as temp_dir:
+            left = Path(temp_dir) / "left.vcf"
+            right = Path(temp_dir) / "right.vcf"
+            left.write_text(
+                "##fileformat=VCFv4.3\n"
+                "#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\tS1\n"
+                "chr1\t100\t.\tA\tC,G\t.\tPASS\t.\tGT\t1/2\n",
+                encoding="utf-8",
+            )
+            right.write_text(
+                "##fileformat=VCFv4.3\n"
+                "#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\tS1\n"
+                "chr1\t100\t.\tA\tC\t.\tPASS\t.\tGT\t0/1\n"
+                "chr1\t100\t.\tA\tG\t.\tPASS\t.\tGT\t0/1\n",
+                encoding="utf-8",
+            )
+
+            report = VCFComparator().compare(str(left), str(right))
+
+        self.assertEqual(report.metrics["variant_jaccard"], 1.0)
+        self.assertEqual(report.metrics["genotype_concordance"], 1.0)
+        self.assertEqual(report.details["file_a_raw_records"], 1)
+        self.assertEqual(report.details["file_a_variants"], 2)
+
+    def test_common_prefix_and_suffix_are_trimmed(self):
+        with TemporaryDirectory() as temp_dir:
+            left = Path(temp_dir) / "left.vcf"
+            right = Path(temp_dir) / "right.vcf"
+            left.write_text(
+                "##fileformat=VCFv4.3\n"
+                "#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\tS1\n"
+                "chr1\t100\t.\tATC\tAGC\t.\tPASS\t.\tGT\t0/1\n",
+                encoding="utf-8",
+            )
+            right.write_text(
+                "##fileformat=VCFv4.3\n"
+                "#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\tS1\n"
+                "chr1\t101\t.\tT\tG\t.\tPASS\t.\tGT\t0/1\n",
+                encoding="utf-8",
+            )
+
+            report = VCFComparator().compare(str(left), str(right))
+
+        self.assertEqual(report.metrics["variant_jaccard"], 1.0)
+        self.assertEqual(report.details["normalization"], "split_alt_alleles_and_trim_shared_bases")

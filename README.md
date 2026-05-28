@@ -14,7 +14,7 @@ This repository currently implements the Phase 1 vertical slice:
 - a count/expression matrix comparator
 - a BED interval comparator
 - a FASTA/FASTQ sequence comparator
-- a lightweight VCF comparator
+- a lightweight VCF comparator with ALT splitting and minimal allele trimming
 - a `samtools flagstat`/`samtools stats` comparator
 - a generic CSV/TSV table comparator
 - JSON/text report writers
