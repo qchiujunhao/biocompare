@@ -34,10 +34,7 @@ def report_to_html(report: ConcordanceReport) -> str:
         if report.warnings
         else "<p>None</p>"
     )
-    metrics_rows = "".join(
-        f"<tr><th>{html_escape(name)}</th><td>{value:.6f}</td></tr>"
-        for name, value in sorted(report.metrics.items())
-    )
+    metrics_rows = "".join(metric_html_row(name, value) for name, value in sorted(report.metrics.items()))
     detail_rows = "".join(
         f"<tr><th>{html_escape(name)}</th><td><code>{html_escape(json.dumps(value, sort_keys=True))}</code></td></tr>"
         for name, value in sorted(report.details.items())
@@ -67,8 +64,10 @@ def report_to_html(report: ConcordanceReport) -> str:
             {warnings}
           </section>
           <section>
-            <h2>Details</h2>
-            <table>{detail_rows}</table>
+            <details open>
+              <summary>Details</summary>
+              <table>{detail_rows}</table>
+            </details>
           </section>
         </main>
         """,
@@ -238,7 +237,7 @@ def batch_result_html_row(result: BatchResult) -> str:
         f"<th>{html_escape(result.item.label)}</th>"
         f"<td class=\"{status_class}\">{html_escape(result.status)}</td>"
         f"<td>{html_escape(comparator)}</td>"
-        f"<td>{html_escape(concordance)}</td>"
+        f"<td>{concordance_html(report.overall_concordance) if report is not None else html_escape(concordance)}</td>"
         f"<td>{html_escape(result.item.file_a)}</td>"
         f"<td>{html_escape(result.item.file_b)}</td>"
         f"<td>{html_escape(messages)}</td>"
@@ -256,6 +255,28 @@ def format_summary_value(value: object) -> str:
 
 def format_summary_label(value: str) -> str:
     return value.replace("_", " ").capitalize()
+
+
+def metric_html_row(name: str, value: float) -> str:
+    return f"<tr><th>{html_escape(name)}</th><td>{metric_value_html(value)}</td></tr>"
+
+
+def metric_value_html(value: float) -> str:
+    if 0.0 <= value <= 1.0:
+        return concordance_html(value)
+    return f"{value:.6f}"
+
+
+def concordance_html(value: float) -> str:
+    bounded = max(0.0, min(1.0, value))
+    return (
+        "<div class=\"metric-value\">"
+        f"<span>{bounded:.4f}</span>"
+        "<div class=\"metric-bar\" aria-hidden=\"true\">"
+        f"<div class=\"metric-bar-fill\" style=\"width: {bounded * 100:.1f}%\"></div>"
+        "</div>"
+        "</div>"
+    )
 
 
 def html_escape(value: object) -> str:
@@ -336,6 +357,32 @@ def html_document(title: str, body: str) -> str:
     code {{
       white-space: pre-wrap;
       word-break: break-word;
+    }}
+    summary {{
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 18px;
+      font-weight: 700;
+    }}
+    details table {{
+      margin-top: 12px;
+    }}
+    .metric-value {{
+      display: grid;
+      grid-template-columns: 72px minmax(120px, 1fr);
+      align-items: center;
+      gap: 12px;
+    }}
+    .metric-bar {{
+      height: 8px;
+      overflow: hidden;
+      background: #e7ecf1;
+      border-radius: 999px;
+    }}
+    .metric-bar-fill {{
+      height: 100%;
+      background: var(--accent);
+      border-radius: inherit;
     }}
     .eyebrow {{
       margin-bottom: 8px;

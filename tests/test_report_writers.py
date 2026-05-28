@@ -21,6 +21,8 @@ class ReportWriterTests(TestCase):
         self.assertIn("<!doctype html>", html)
         self.assertIn("TableComparator", html)
         self.assertIn("row_overlap", html)
+        self.assertIn("metric-bar", html)
+        self.assertIn("<details open>", html)
 
     def test_write_report_uses_html_extension(self):
         report = ComparisonEngine().compare(
@@ -44,6 +46,7 @@ class ReportWriterTests(TestCase):
         self.assertIn("biocompare batch report", html)
         self.assertIn("Mean concordance", html.replace("_", " "))
         self.assertIn("TableComparator", html)
+        self.assertIn("metric-bar", html)
 
     def test_write_batch_uses_html_extension(self):
         results = run_batch("tests/fixtures/batch_manifest.tsv")
@@ -53,4 +56,3 @@ class ReportWriterTests(TestCase):
             html = output_path.read_text(encoding="utf-8")
 
         self.assertIn("Batch Comparison", html)
-
