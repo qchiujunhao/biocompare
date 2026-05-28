@@ -35,6 +35,17 @@ column and at least two numeric sample columns. It reports gene/sample overlap,
 per-sample correlations, per-sample magnitude similarity, library size ratios,
 gene profile correlations, and zero-pattern overlap.
 
+Compare normalized expression matrices:
+
+```bash
+python3 -m biocompare compare tests/fixtures/expression_tpm_a.tsv tests/fixtures/expression_tpm_b.tsv --type expression
+```
+
+The expression comparator is intended for TPM, FPKM, CPM, and other normalized
+expression matrices. It reports gene/sample overlap, sample profile
+correlations, expression magnitude similarity, distribution similarity, top
+expressed gene overlap, and gene profile similarity across samples.
+
 Compare BED intervals:
 
 ```bash

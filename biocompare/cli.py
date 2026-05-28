@@ -44,7 +44,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def add_common_options(parser: argparse.ArgumentParser) -> None:
-    parser.add_argument("-t", "--type", dest="file_type", help="Force a comparator/file type such as bam_stats, bed, counts, deg, fasta, fastq, table, csv, tsv, or vcf.")
+    parser.add_argument("-t", "--type", dest="file_type", help="Force a comparator/file type such as bam_stats, bed, counts, deg, expression, fasta, fastq, table, csv, tsv, or vcf.")
     parser.add_argument("--key", dest="key_column", help="Column to use for row alignment.")
     parser.add_argument("--delimiter", help="Force a delimiter for tabular files.")
     parser.add_argument("--alpha", type=float, help="DEG adjusted p-value threshold. Default: 0.05.")

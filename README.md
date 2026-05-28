@@ -12,6 +12,7 @@ This repository currently implements the Phase 1 vertical slice:
 - file type detection for common bioinformatics and tabular formats
 - a differential expression result comparator
 - a count/expression matrix comparator
+- a normalized expression matrix comparator
 - a BED interval comparator
 - a FASTA/FASTQ sequence comparator
 - a lightweight VCF comparator with ALT splitting and minimal allele trimming
@@ -48,6 +49,13 @@ Compare count matrices:
 ```bash
 python3 -m biocompare compare tests/fixtures/counts_a.tsv tests/fixtures/counts_b.tsv \
   --type counts
+```
+
+Compare normalized expression matrices:
+
+```bash
+python3 -m biocompare compare tests/fixtures/expression_tpm_a.tsv tests/fixtures/expression_tpm_b.tsv \
+  --type expression
 ```
 
 Compare BED intervals:
