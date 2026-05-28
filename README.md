@@ -131,3 +131,8 @@ comparators with the `biocompare.comparators` entry point group.
 Additional documentation is in `docs/`, including API notes, design rationale,
 and tutorials for regression testing, RNA-seq outputs, variant calls, and BED
 peak comparisons.
+
+## Citation and Paper Draft
+
+Citation metadata is available in `CITATION.cff`. A draft JOSS-style paper is
+available under `paper/`.
