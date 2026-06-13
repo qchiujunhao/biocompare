@@ -1,5 +1,5 @@
 ---
-title: "biocompare: Semantic Comparison of Bioinformatics Pipeline Outputs"
+title: "PipeConcord: Semantic Comparison of Bioinformatics Pipeline Outputs"
 tags:
   - Python
   - bioinformatics
@@ -7,18 +7,18 @@ tags:
   - reproducibility
   - concordance
 authors:
-  - name: "biocompare contributors"
+  - name: "PipeConcord contributors"
     affiliation: 1
 affiliations:
   - name: "Open source contributors"
     index: 1
-date: 27 May 2026
+date: 13 June 2026
 bibliography: paper.bib
 ---
 
 # Summary
 
-`biocompare` is a Python package and command-line tool for semantic comparison
+PipeConcord is a Python package and command-line tool for semantic comparison
 of bioinformatics pipeline outputs. It produces standardized concordance
 reports for common result types, including differential expression tables,
 count matrices, normalized expression matrices, BED intervals, FASTA/FASTQ
@@ -41,7 +41,7 @@ Existing tools are strong within specific domains, such as interval operations
 with BEDTools [@quinlan2010bedtools], alignment summaries with SAMtools
 [@li2009sequence], or variant representation standards [@danecek2011variant].
 Workflow testing tools can verify snapshots or checksums, but checksums do not
-express scientific concordance. `biocompare` fills the gap between bitwise
+express scientific concordance. `pipeconcord` fills the gap between bitwise
 testing and format-specific benchmarking by providing a unified comparator
 interface and report schema across several common output types.
 
@@ -49,14 +49,14 @@ interface and report schema across several common output types.
 
 Specialized benchmarking remains essential for many tasks. For example, variant
 calling against truth sets requires dedicated tools and carefully normalized
-inputs. `biocompare` is not intended to replace those benchmarks. Instead, it
+inputs. `pipeconcord` is not intended to replace those benchmarks. Instead, it
 targets routine pipeline development, where users need lightweight checks across
 many heterogeneous outputs.
 
 The closest general-purpose alternatives are ad hoc scripts, snapshot testing,
 and format validators. These approaches answer different questions: whether a
 file changed, whether a file is structurally valid, or whether one metric has a
-specific value. `biocompare` instead returns a multi-metric concordance report
+specific value. `pipeconcord` instead returns a multi-metric concordance report
 with a bounded summary score suitable for continuous integration thresholds.
 
 # Software Design
@@ -76,7 +76,7 @@ pairs and exits non-zero when outputs fail a user-defined concordance threshold.
 
 # Research Impact Statement
 
-`biocompare` supports reproducible computational biology by making regression
+`pipeconcord` supports reproducible computational biology by making regression
 checks more scientifically meaningful. It can help workflow authors detect
 behavioral drift during refactoring, software upgrades, container rebuilds, and
 parameter changes. The tool is most useful as a complement to domain-specific
@@ -90,4 +90,3 @@ coding agent. Human review is required before scientific release, including
 verification of metric definitions, references, documentation, and examples.
 
 # References
-

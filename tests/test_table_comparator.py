@@ -2,7 +2,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest import TestCase
 
-from biocompare.comparators.table import TableComparator
+from pipeconcord.comparators.table import TableComparator
 
 
 class TableComparatorTests(TestCase):

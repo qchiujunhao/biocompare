@@ -4,9 +4,9 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-from biocompare.comparators.base import Comparator
-from biocompare.core.report import ConcordanceReport
-from biocompare.core.utils import clamp01
+from pipeconcord.comparators.base import Comparator
+from pipeconcord.core.report import ConcordanceReport
+from pipeconcord.core.utils import clamp01
 
 
 FLAGSTAT_COUNT_RE = re.compile(r"^(\d+)\s+\+\s+\d+\s+(.+)$")

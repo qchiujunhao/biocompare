@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from biocompare.core.registry import ComparatorRegistry
+from pipeconcord.core.registry import ComparatorRegistry
 
 
 def select_comparator(

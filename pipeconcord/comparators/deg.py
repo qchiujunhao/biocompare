@@ -2,11 +2,11 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from biocompare.comparators.base import Comparator
-from biocompare.comparators.table import ParsedTable, parse_float, read_table
-from biocompare.core.report import ConcordanceReport
-from biocompare.core.utils import clamp01, jaccard, mean_absolute_error, pearson, spearman
-from biocompare.detection.filetype import detect_file_type
+from pipeconcord.comparators.base import Comparator
+from pipeconcord.comparators.table import ParsedTable, parse_float, read_table
+from pipeconcord.core.report import ConcordanceReport
+from pipeconcord.core.utils import clamp01, jaccard, mean_absolute_error, pearson, spearman
+from pipeconcord.detection.filetype import detect_file_type
 
 
 GENE_ALIASES = {

@@ -5,8 +5,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from biocompare.core.engine import ComparisonEngine
-from biocompare.core.report import ConcordanceReport
+from pipeconcord.core.engine import ComparisonEngine
+from pipeconcord.core.report import ConcordanceReport
 
 
 @dataclass(slots=True)

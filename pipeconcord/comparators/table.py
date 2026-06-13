@@ -5,9 +5,9 @@ import io
 from dataclasses import dataclass
 from pathlib import Path
 
-from biocompare.comparators.base import Comparator
-from biocompare.core.report import ConcordanceReport
-from biocompare.core.utils import (
+from pipeconcord.comparators.base import Comparator
+from pipeconcord.core.report import ConcordanceReport
+from pipeconcord.core.utils import (
     agreement_rate,
     clamp01,
     cohen_kappa,
@@ -17,7 +17,7 @@ from biocompare.core.utils import (
     pearson,
     spearman,
 )
-from biocompare.detection.filetype import detect_file_type, sniff_delimiter
+from pipeconcord.detection.filetype import detect_file_type, sniff_delimiter
 
 
 @dataclass(slots=True)

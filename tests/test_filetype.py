@@ -3,7 +3,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest import TestCase
 
-from biocompare.detection.filetype import detect_file_type, sniff_delimiter
+from pipeconcord.detection.filetype import detect_file_type, sniff_delimiter
 
 
 class FileTypeTests(TestCase):

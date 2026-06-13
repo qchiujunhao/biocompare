@@ -2,7 +2,7 @@
 
 ## `ConcordanceReport`
 
-All comparators return `biocompare.core.report.ConcordanceReport`.
+All comparators return `pipeconcord.core.report.ConcordanceReport`.
 
 Fields:
 
@@ -16,7 +16,7 @@ Fields:
 ## `ComparisonEngine`
 
 ```python
-from biocompare import ComparisonEngine
+from pipeconcord import ComparisonEngine
 
 report = ComparisonEngine().compare(
     "old_de.tsv",
@@ -33,7 +33,7 @@ would be ambiguous.
 ## Batch API
 
 ```python
-from biocompare.core.batch import run_batch, batch_summary
+from pipeconcord.core.batch import run_batch, batch_summary
 
 results = run_batch("manifest.tsv")
 summary = batch_summary(results)
@@ -49,7 +49,7 @@ Manifest columns:
 ## Report Writers
 
 ```python
-from biocompare.io.report_writers import report_to_json, report_to_html
+from pipeconcord.io.report_writers import report_to_json, report_to_html
 
 json_text = report_to_json(report)
 html_text = report_to_html(report)

@@ -1,9 +1,13 @@
-# biocompare
+# PipeConcord
 
-`biocompare` compares bioinformatics pipeline outputs with semantic metrics
+`pipeconcord` compares bioinformatics pipeline outputs with semantic metrics
 instead of byte-for-byte snapshots. Each comparator returns the same
 `ConcordanceReport` shape, so one-off checks and batch regression tests can
 consume results consistently.
+
+Rename note: the first alpha release used the package name `biocompare`. Current
+and future releases use `pipeconcord` to avoid confusion with an unrelated
+life-science product directory.
 
 The documentation site is intended for users evaluating the project as a tool
 for regression testing, pipeline validation, and reproducible scientific
@@ -27,15 +31,15 @@ comparisons.
 Install from PyPI:
 
 ```bash
-python3 -m pip install biocompare
+python3 -m pip install pipeconcord
 ```
 
-PyPI package: <https://pypi.org/project/biocompare/>
+PyPI package: <https://pypi.org/project/pipeconcord/>
 
 ```bash
-biocompare compare file_a.tsv file_b.tsv --type table --key gene_id
-biocompare batch manifest.tsv --min-concordance 0.95
-biocompare compare file_a.bed file_b.bed --type bed --format html --output report.html
+pipeconcord compare file_a.tsv file_b.tsv --type table --key gene_id
+pipeconcord batch manifest.tsv --min-concordance 0.95
+pipeconcord compare file_a.bed file_b.bed --type bed --format html --output report.html
 ```
 
 ## Documentation
@@ -51,4 +55,4 @@ biocompare compare file_a.bed file_b.bed --type bed --format html --output repor
 
 ## Source Repository
 
-- [GitHub repository](https://github.com/qchiujunhao/biocompare)
+- [GitHub repository](https://github.com/qchiujunhao/pipeconcord)

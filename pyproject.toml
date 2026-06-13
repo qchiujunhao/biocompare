@@ -3,15 +3,15 @@ requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "biocompare"
-version = "0.1.0"
+name = "pipeconcord"
+version = "0.2.0"
 description = "Format-aware concordance reports for bioinformatics pipeline outputs."
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
 license-files = ["LICENSE"]
 authors = [
-  { name = "biocompare contributors" }
+  { name = "PipeConcord contributors" }
 ]
 keywords = ["bioinformatics", "testing", "concordance", "pipeline", "comparison"]
 classifiers = [
@@ -32,30 +32,30 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://qchiujunhao.github.io/biocompare/"
-Repository = "https://github.com/qchiujunhao/biocompare"
-Issues = "https://github.com/qchiujunhao/biocompare/issues"
-Documentation = "https://qchiujunhao.github.io/biocompare/"
+Homepage = "https://qchiujunhao.github.io/pipeconcord/"
+Repository = "https://github.com/qchiujunhao/pipeconcord"
+Issues = "https://github.com/qchiujunhao/pipeconcord/issues"
+Documentation = "https://qchiujunhao.github.io/pipeconcord/"
 
 [project.scripts]
-biocompare = "biocompare.cli:main"
+pipeconcord = "pipeconcord.cli:main"
 
-[project.entry-points."biocompare.comparators"]
-bam_stats = "biocompare.comparators.bam_stats:BAMStatsComparator"
-bed = "biocompare.comparators.bed:BEDComparator"
-counts = "biocompare.comparators.counts:CountsComparator"
-deg = "biocompare.comparators.deg:DEGComparator"
-expression = "biocompare.comparators.expression:ExpressionComparator"
-fasta = "biocompare.comparators.fasta:FASTAComparator"
-table = "biocompare.comparators.table:TableComparator"
-vcf = "biocompare.comparators.vcf:VCFComparator"
+[project.entry-points."pipeconcord.comparators"]
+bam_stats = "pipeconcord.comparators.bam_stats:BAMStatsComparator"
+bed = "pipeconcord.comparators.bed:BEDComparator"
+counts = "pipeconcord.comparators.counts:CountsComparator"
+deg = "pipeconcord.comparators.deg:DEGComparator"
+expression = "pipeconcord.comparators.expression:ExpressionComparator"
+fasta = "pipeconcord.comparators.fasta:FASTAComparator"
+table = "pipeconcord.comparators.table:TableComparator"
+vcf = "pipeconcord.comparators.vcf:VCFComparator"
 
 [tool.setuptools.packages.find]
-include = ["biocompare*"]
+include = ["pipeconcord*"]
 
 [tool.coverage.run]
 branch = true
-source = ["biocompare"]
+source = ["pipeconcord"]
 
 [tool.coverage.report]
 show_missing = true

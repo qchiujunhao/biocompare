@@ -14,7 +14,7 @@ class CliTests(TestCase):
             left.write_text("id\tvalue\nA\t1\n", encoding="utf-8")
             right.write_text("id\tvalue\nA\t1\n", encoding="utf-8")
             result = subprocess.run(
-                [sys.executable, "-m", "biocompare", "compare", str(left), str(right), "--key", "id"],
+                [sys.executable, "-m", "pipeconcord", "compare", str(left), str(right), "--key", "id"],
                 check=True,
                 capture_output=True,
                 text=True,
@@ -31,7 +31,7 @@ class CliTests(TestCase):
             left.write_text("id\tvalue\nA\t1\n", encoding="utf-8")
             right.write_text("id\tvalue\nA\t1\n", encoding="utf-8")
             result = subprocess.run(
-                [sys.executable, "-m", "biocompare", str(left), str(right), "--key", "id"],
+                [sys.executable, "-m", "pipeconcord", str(left), str(right), "--key", "id"],
                 check=True,
                 capture_output=True,
                 text=True,
@@ -50,7 +50,7 @@ class CliTests(TestCase):
                 [
                     sys.executable,
                     "-m",
-                    "biocompare",
+                    "pipeconcord",
                     "compare",
                     str(left),
                     str(right),

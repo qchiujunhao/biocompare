@@ -1,8 +1,8 @@
-site_name: biocompare
+site_name: PipeConcord
 site_description: Format-aware concordance reports for bioinformatics pipeline outputs
-site_url: https://qchiujunhao.github.io/biocompare/
-repo_url: https://github.com/qchiujunhao/biocompare
-repo_name: qchiujunhao/biocompare
+site_url: https://qchiujunhao.github.io/pipeconcord/
+repo_url: https://github.com/qchiujunhao/pipeconcord
+repo_name: qchiujunhao/pipeconcord
 
 theme:
   name: readthedocs

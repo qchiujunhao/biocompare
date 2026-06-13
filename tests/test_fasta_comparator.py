@@ -2,8 +2,8 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest import TestCase
 
-from biocompare.comparators.fasta import FASTAComparator
-from biocompare.core.engine import ComparisonEngine
+from pipeconcord.comparators.fasta import FASTAComparator
+from pipeconcord.core.engine import ComparisonEngine
 
 
 class FASTAComparatorTests(TestCase):

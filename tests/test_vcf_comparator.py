@@ -2,8 +2,8 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest import TestCase
 
-from biocompare.comparators.vcf import VCFComparator
-from biocompare.core.engine import ComparisonEngine
+from pipeconcord.comparators.vcf import VCFComparator
+from pipeconcord.core.engine import ComparisonEngine
 
 
 class VCFComparatorTests(TestCase):

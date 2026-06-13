@@ -1,6 +1,6 @@
 # Contributing
 
-`biocompare` is built around small comparator plugins that return a shared
+`pipeconcord` is built around small comparator plugins that return a shared
 `ConcordanceReport`. Contributions should keep that contract stable and add
 tests that demonstrate the scientific behavior being compared.
 

@@ -2,8 +2,8 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest import TestCase
 
-from biocompare.comparators.deg import DEGComparator
-from biocompare.core.engine import ComparisonEngine
+from pipeconcord.comparators.deg import DEGComparator
+from pipeconcord.core.engine import ComparisonEngine
 
 
 class DEGComparatorTests(TestCase):

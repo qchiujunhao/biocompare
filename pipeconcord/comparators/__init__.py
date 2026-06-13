@@ -1,14 +1,14 @@
 from __future__ import annotations
 
-from biocompare.comparators.bam_stats import BAMStatsComparator
-from biocompare.comparators.bed import BEDComparator
-from biocompare.comparators.counts import CountsComparator
-from biocompare.comparators.deg import DEGComparator
-from biocompare.comparators.expression import ExpressionComparator
-from biocompare.comparators.fasta import FASTAComparator
-from biocompare.comparators.table import TableComparator
-from biocompare.comparators.vcf import VCFComparator
-from biocompare.core.registry import ComparatorRegistry
+from pipeconcord.comparators.bam_stats import BAMStatsComparator
+from pipeconcord.comparators.bed import BEDComparator
+from pipeconcord.comparators.counts import CountsComparator
+from pipeconcord.comparators.deg import DEGComparator
+from pipeconcord.comparators.expression import ExpressionComparator
+from pipeconcord.comparators.fasta import FASTAComparator
+from pipeconcord.comparators.table import TableComparator
+from pipeconcord.comparators.vcf import VCFComparator
+from pipeconcord.core.registry import ComparatorRegistry
 
 
 def register_builtin_comparators(registry: type[ComparatorRegistry] = ComparatorRegistry) -> None:

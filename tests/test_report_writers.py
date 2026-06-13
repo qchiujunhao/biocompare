@@ -2,9 +2,9 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest import TestCase
 
-from biocompare.core.batch import run_batch
-from biocompare.core.engine import ComparisonEngine
-from biocompare.io.report_writers import batch_to_html, report_to_html, write_batch, write_report
+from pipeconcord.core.batch import run_batch
+from pipeconcord.core.engine import ComparisonEngine
+from pipeconcord.io.report_writers import batch_to_html, report_to_html, write_batch, write_report
 
 
 class ReportWriterTests(TestCase):
@@ -43,7 +43,7 @@ class ReportWriterTests(TestCase):
 
         html = batch_to_html(results)
 
-        self.assertIn("biocompare batch report", html)
+        self.assertIn("pipeconcord batch report", html)
         self.assertIn("Mean concordance", html.replace("_", " "))
         self.assertIn("TableComparator", html)
         self.assertIn("metric-bar", html)

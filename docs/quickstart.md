@@ -3,10 +3,10 @@
 Install from PyPI:
 
 ```bash
-python3 -m pip install biocompare
+python3 -m pip install pipeconcord
 ```
 
-The package is published at <https://pypi.org/project/biocompare/> and requires
+The package is published at <https://pypi.org/project/pipeconcord/> and requires
 Python 3.10 or newer.
 
 Create two small TSV files:
@@ -28,7 +28,7 @@ EOF
 Compare them and align rows by `gene_id`:
 
 ```bash
-biocompare compare old.tsv new.tsv --key gene_id
+pipeconcord compare old.tsv new.tsv --key gene_id
 ```
 
 The JSON report includes:
@@ -42,7 +42,7 @@ The JSON report includes:
 Compare differential expression outputs:
 
 ```bash
-biocompare compare old_de.tsv new_de.tsv --type deg
+pipeconcord compare old_de.tsv new_de.tsv --type deg
 ```
 
 The DEG comparator auto-detects common gene, log-fold-change, and adjusted
@@ -52,7 +52,7 @@ overlap, top-ranked gene overlap, logFC correlations, and direction agreement.
 Compare count or expression matrices:
 
 ```bash
-biocompare compare old_counts.tsv new_counts.tsv --type counts
+pipeconcord compare old_counts.tsv new_counts.tsv --type counts
 ```
 
 The counts comparator expects a gene-by-sample table with one gene identifier
@@ -63,7 +63,7 @@ gene profile correlations, and zero-pattern overlap.
 Compare normalized expression matrices:
 
 ```bash
-biocompare compare old_tpm.tsv new_tpm.tsv --type expression
+pipeconcord compare old_tpm.tsv new_tpm.tsv --type expression
 ```
 
 The expression comparator is intended for TPM, FPKM, CPM, and other normalized
@@ -74,7 +74,7 @@ expressed gene overlap, and gene profile similarity across samples.
 Compare BED intervals:
 
 ```bash
-biocompare compare old_peaks.bed new_peaks.bed --type bed
+pipeconcord compare old_peaks.bed new_peaks.bed --type bed
 ```
 
 The BED comparator assumes standard BED 0-based half-open coordinates. It
@@ -86,7 +86,7 @@ intervals should count as matched only if both intervals overlap by at least
 Compare FASTA or FASTQ sequences:
 
 ```bash
-biocompare compare old_sequences.fa new_sequences.fa --type fasta
+pipeconcord compare old_sequences.fa new_sequences.fa --type fasta
 ```
 
 The sequence comparator aligns records by identifier and reports record overlap,
@@ -96,7 +96,7 @@ similarity. FASTQ quality scores are validated but not scored yet.
 Compare VCF calls:
 
 ```bash
-biocompare compare old_calls.vcf new_calls.vcf --type vcf
+pipeconcord compare old_calls.vcf new_calls.vcf --type vcf
 ```
 
 The VCF comparator splits multiallelic ALT alleles and trims shared prefix/suffix
@@ -110,7 +110,7 @@ VCF tooling when complex representation differences matter.
 Compare alignment summary statistics:
 
 ```bash
-biocompare compare old_flagstat.txt new_flagstat.txt --type bam_stats
+pipeconcord compare old_flagstat.txt new_flagstat.txt --type bam_stats
 ```
 
 The BAM stats comparator intentionally does not parse BAM files. It compares
@@ -122,7 +122,7 @@ similarity when those fields are present.
 Run a batch manifest:
 
 ```bash
-biocompare batch manifest.tsv --format tsv
+pipeconcord batch manifest.tsv --format tsv
 ```
 
 Manifest files can be CSV or TSV and must include `file_a` and `file_b`.
@@ -135,12 +135,12 @@ non-zero status if any successful comparison falls below that threshold.
 Write HTML reports:
 
 ```bash
-biocompare compare old_peaks.bed new_peaks.bed \
+pipeconcord compare old_peaks.bed new_peaks.bed \
   --type bed \
   --format html \
   --output report.html
 
-biocompare batch manifest.tsv \
+pipeconcord batch manifest.tsv \
   --format html \
   --output batch_report.html
 ```

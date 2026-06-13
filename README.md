@@ -1,15 +1,19 @@
-# biocompare
+# PipeConcord
 
-`biocompare` is a Python toolkit for comparing bioinformatics pipeline outputs
+`pipeconcord` is a Python toolkit for comparing bioinformatics pipeline outputs
 with semantic, format-aware metrics. Instead of only checking whether files are
 byte-for-byte identical, it measures whether two runs agree in biologically or
 analytically meaningful ways.
 
-Project website: <https://qchiujunhao.github.io/biocompare/>
+Project website: <https://qchiujunhao.github.io/pipeconcord/>
 
 Status: alpha. The core comparison model and initial comparators are usable, but
 APIs and metrics may change as more bioinformatics formats and workflows are
 validated.
+
+Rename note: the first alpha release used the package name `biocompare`. Current
+and future releases use `pipeconcord` to avoid confusion with an unrelated
+life-science product directory.
 
 This repository currently implements the Phase 1 vertical slice:
 
@@ -33,10 +37,10 @@ This repository currently implements the Phase 1 vertical slice:
 Install from PyPI:
 
 ```bash
-python3 -m pip install biocompare
+python3 -m pip install pipeconcord
 ```
 
-The package is published at <https://pypi.org/project/biocompare/> and requires
+The package is published at <https://pypi.org/project/pipeconcord/> and requires
 Python 3.10 or newer.
 
 Create two small TSV files:
@@ -58,13 +62,13 @@ EOF
 Compare them by `gene_id`:
 
 ```bash
-biocompare compare old.tsv new.tsv --key gene_id
+pipeconcord compare old.tsv new.tsv --key gene_id
 ```
 
 Write a report to disk:
 
 ```bash
-biocompare compare old.tsv new.tsv \
+pipeconcord compare old.tsv new.tsv \
   --key gene_id \
   --output report.json
 ```
@@ -72,7 +76,7 @@ biocompare compare old.tsv new.tsv \
 Compare differential expression tables:
 
 ```bash
-biocompare compare old_de.tsv new_de.tsv \
+pipeconcord compare old_de.tsv new_de.tsv \
   --type deg \
   --alpha 0.05
 ```
@@ -80,21 +84,21 @@ biocompare compare old_de.tsv new_de.tsv \
 Compare count matrices:
 
 ```bash
-biocompare compare old_counts.tsv new_counts.tsv \
+pipeconcord compare old_counts.tsv new_counts.tsv \
   --type counts
 ```
 
 Compare normalized expression matrices:
 
 ```bash
-biocompare compare old_tpm.tsv new_tpm.tsv \
+pipeconcord compare old_tpm.tsv new_tpm.tsv \
   --type expression
 ```
 
 Compare BED intervals:
 
 ```bash
-biocompare compare old_peaks.bed new_peaks.bed \
+pipeconcord compare old_peaks.bed new_peaks.bed \
   --type bed \
   --min-reciprocal-overlap 0.5
 ```
@@ -102,21 +106,21 @@ biocompare compare old_peaks.bed new_peaks.bed \
 Compare FASTA sequences:
 
 ```bash
-biocompare compare old_sequences.fa new_sequences.fa \
+pipeconcord compare old_sequences.fa new_sequences.fa \
   --type fasta
 ```
 
 Compare VCF calls:
 
 ```bash
-biocompare compare old_calls.vcf new_calls.vcf \
+pipeconcord compare old_calls.vcf new_calls.vcf \
   --type vcf
 ```
 
 Optionally provide a reference FASTA for simple repeated-indel left alignment:
 
 ```bash
-biocompare compare calls_a.vcf calls_b.vcf \
+pipeconcord compare calls_a.vcf calls_b.vcf \
   --type vcf \
   --reference-fasta reference.fa
 ```
@@ -124,14 +128,14 @@ biocompare compare calls_a.vcf calls_b.vcf \
 Compare alignment summary statistics:
 
 ```bash
-biocompare compare old_flagstat.txt new_flagstat.txt \
+pipeconcord compare old_flagstat.txt new_flagstat.txt \
   --type bam_stats
 ```
 
 Run a batch comparison from a manifest:
 
 ```bash
-biocompare batch manifest.tsv --format text
+pipeconcord batch manifest.tsv --format text
 ```
 
 The manifest must contain `file_a` and `file_b` columns. Optional columns are
@@ -141,13 +145,13 @@ Use `--min-concordance` in CI to fail when any comparison falls below a chosen
 threshold:
 
 ```bash
-biocompare batch manifest.tsv --min-concordance 0.95
+pipeconcord batch manifest.tsv --min-concordance 0.95
 ```
 
 Write an HTML report:
 
 ```bash
-biocompare compare old_peaks.bed new_peaks.bed \
+pipeconcord compare old_peaks.bed new_peaks.bed \
   --type bed \
   --format html \
   --output report.html
@@ -179,9 +183,9 @@ python3 -m coverage report
 
 ## Plugin Model
 
-Comparators subclass `biocompare.comparators.base.Comparator` and return a
-`biocompare.core.report.ConcordanceReport`. Third-party packages can register
-comparators with the `biocompare.comparators` entry point group.
+Comparators subclass `pipeconcord.comparators.base.Comparator` and return a
+`pipeconcord.core.report.ConcordanceReport`. Third-party packages can register
+comparators with the `pipeconcord.comparators` entry point group.
 
 ## Documentation
 

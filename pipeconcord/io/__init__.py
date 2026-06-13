@@ -1,4 +1,4 @@
-from biocompare.io.report_writers import (
+from pipeconcord.io.report_writers import (
     batch_to_html,
     batch_to_json,
     batch_to_text,

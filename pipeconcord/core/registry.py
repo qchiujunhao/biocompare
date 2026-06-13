@@ -3,7 +3,7 @@ from __future__ import annotations
 from importlib.metadata import entry_points
 from typing import ClassVar
 
-from biocompare.comparators.base import Comparator
+from pipeconcord.comparators.base import Comparator
 
 
 class ComparatorRegistry:
@@ -35,9 +35,9 @@ class ComparatorRegistry:
             return
         discovered = entry_points()
         if hasattr(discovered, "select"):
-            group = discovered.select(group="biocompare.comparators")
+            group = discovered.select(group="pipeconcord.comparators")
         else:
-            group = discovered.get("biocompare.comparators", [])
+            group = discovered.get("pipeconcord.comparators", [])
 
         for entry_point in group:
             comparator_cls = entry_point.load()

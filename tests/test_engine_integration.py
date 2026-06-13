@@ -2,8 +2,8 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest import TestCase
 
-from biocompare.core.engine import ComparisonEngine
-from biocompare.io.report_writers import report_to_json
+from pipeconcord.core.engine import ComparisonEngine
+from pipeconcord.io.report_writers import report_to_json
 
 
 class EngineIntegrationTests(TestCase):

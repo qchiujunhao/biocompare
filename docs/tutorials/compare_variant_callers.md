@@ -3,7 +3,7 @@
 For lightweight VCF concordance:
 
 ```bash
-biocompare compare caller_a.vcf caller_b.vcf --type vcf
+pipeconcord compare caller_a.vcf caller_b.vcf --type vcf
 ```
 
 The VCF comparator reports:
@@ -20,6 +20,6 @@ complex indels upstream when representation differences should not count as
 discordance.
 
 For truth-set benchmarking, use specialized tools such as `hap.py` or
-`vcfeval`; `biocompare` is intended for pipeline regression and broad semantic
+`vcfeval`; `pipeconcord` is intended for pipeline regression and broad semantic
 comparison.
 

@@ -1,6 +1,6 @@
 # Design
 
-`biocompare` is intentionally small and plugin-oriented. The core package does
+`pipeconcord` is intentionally small and plugin-oriented. The core package does
 four things:
 
 1. Detect common file types.

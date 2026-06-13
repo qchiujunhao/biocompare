@@ -1,15 +1,14 @@
 cff-version: 1.2.0
-message: "If you use biocompare, please cite the software and the accompanying paper draft."
-title: "biocompare: Semantic Comparison of Bioinformatics Pipeline Outputs"
-version: 0.1.0
-date-released: 2026-05-27
+message: "If you use PipeConcord, please cite the software and the accompanying paper draft."
+title: "PipeConcord: Semantic Comparison of Bioinformatics Pipeline Outputs"
+version: 0.2.0
+date-released: 2026-06-13
 authors:
-  - name: "biocompare contributors"
+  - name: "PipeConcord contributors"
 license: MIT
-repository-code: "https://github.com/qchiujunhao/biocompare"
+repository-code: "https://github.com/qchiujunhao/pipeconcord"
 keywords:
   - bioinformatics
   - pipeline testing
   - concordance
   - reproducibility
-

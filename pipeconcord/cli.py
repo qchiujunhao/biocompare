@@ -3,9 +3,9 @@ from __future__ import annotations
 import argparse
 import sys
 
-from biocompare.core.batch import run_batch
-from biocompare.core.engine import ComparisonEngine
-from biocompare.io.report_writers import (
+from pipeconcord.core.batch import run_batch
+from pipeconcord.core.engine import ComparisonEngine
+from pipeconcord.io.report_writers import (
     batch_to_html,
     batch_to_json,
     batch_to_text,
@@ -20,7 +20,7 @@ from biocompare.io.report_writers import (
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="biocompare",
+        prog="pipeconcord",
         description="Generate semantic concordance reports for bioinformatics outputs.",
     )
     subparsers = parser.add_subparsers(dest="command")
@@ -74,7 +74,7 @@ def main(argv: list[str] | None = None) -> int:
             return run_batch_command(args)
         return run_compare_command(args)
     except Exception as exc:
-        parser.exit(2, f"biocompare: error: {exc}\n")
+        parser.exit(2, f"pipeconcord: error: {exc}\n")
     return 0
 
 

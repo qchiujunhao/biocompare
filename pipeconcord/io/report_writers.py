@@ -4,8 +4,8 @@ import json
 from pathlib import Path
 from html import escape
 
-from biocompare.core.batch import BatchResult, batch_summary
-from biocompare.core.report import ConcordanceReport
+from pipeconcord.core.batch import BatchResult, batch_summary
+from pipeconcord.core.report import ConcordanceReport
 
 
 def report_to_json(report: ConcordanceReport, *, indent: int = 2) -> str:
@@ -40,7 +40,7 @@ def report_to_html(report: ConcordanceReport) -> str:
         for name, value in sorted(report.details.items())
     )
     return html_document(
-        "biocompare report",
+        "pipeconcord report",
         f"""
         <header>
           <p class="eyebrow">Single Comparison</p>
@@ -170,11 +170,11 @@ def batch_to_html(results: list[BatchResult]) -> str:
     )
     result_rows = "".join(batch_result_html_row(result) for result in results)
     return html_document(
-        "biocompare batch report",
+        "pipeconcord batch report",
         f"""
         <header>
           <p class="eyebrow">Batch Comparison</p>
-          <h1>biocompare batch report</h1>
+          <h1>pipeconcord batch report</h1>
           <p class="score">{summary['ok']} of {summary['total']} comparisons completed</p>
         </header>
         <main>

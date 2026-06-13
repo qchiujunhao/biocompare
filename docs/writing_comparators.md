@@ -3,8 +3,8 @@
 Custom comparators subclass `Comparator` and return a `ConcordanceReport`.
 
 ```python
-from biocompare.comparators.base import Comparator
-from biocompare.core.report import ConcordanceReport
+from pipeconcord.comparators.base import Comparator
+from pipeconcord.core.report import ConcordanceReport
 
 
 class MyComparator(Comparator):
@@ -27,7 +27,7 @@ class MyComparator(Comparator):
 Register it through `pyproject.toml`:
 
 ```toml
-[project.entry-points."biocompare.comparators"]
+[project.entry-points."pipeconcord.comparators"]
 my_format = "mypackage.compare:MyComparator"
 ```
 

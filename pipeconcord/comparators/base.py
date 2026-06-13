@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 
-from biocompare.core.report import ConcordanceReport
+from pipeconcord.core.report import ConcordanceReport
 
 
 class Comparator(ABC):

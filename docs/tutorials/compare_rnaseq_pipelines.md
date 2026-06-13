@@ -7,7 +7,7 @@ comparator that matches its scientific meaning.
 ## Counts
 
 ```bash
-biocompare compare old/counts.tsv new/counts.tsv --type counts
+pipeconcord compare old/counts.tsv new/counts.tsv --type counts
 ```
 
 Use count metrics to check sample-wise correlation, library-size consistency,
@@ -16,7 +16,7 @@ gene overlap, and zero-pattern agreement.
 ## Normalized Expression
 
 ```bash
-biocompare compare old/tpm.tsv new/tpm.tsv --type expression
+pipeconcord compare old/tpm.tsv new/tpm.tsv --type expression
 ```
 
 Use expression metrics to check profile correlation, magnitude similarity,
@@ -25,7 +25,7 @@ distribution similarity, and top expressed gene overlap.
 ## Differential Expression
 
 ```bash
-biocompare compare old/de.tsv new/de.tsv --type deg --alpha 0.05
+pipeconcord compare old/de.tsv new/de.tsv --type deg --alpha 0.05
 ```
 
 Use DEG metrics to compare significant gene sets, log-fold-change rank

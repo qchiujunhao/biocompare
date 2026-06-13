@@ -5,8 +5,8 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest import TestCase
 
-from biocompare.core.batch import batch_summary, read_manifest, run_batch
-from biocompare.io.report_writers import batch_to_tsv
+from pipeconcord.core.batch import batch_summary, read_manifest, run_batch
+from pipeconcord.io.report_writers import batch_to_tsv
 
 
 class BatchTests(TestCase):
@@ -37,7 +37,7 @@ class BatchTests(TestCase):
 class BatchCliTests(TestCase):
     def test_cli_batch_outputs_json_summary(self):
         result = subprocess.run(
-            [sys.executable, "-m", "biocompare", "batch", "tests/fixtures/batch_manifest.tsv", "--format", "json"],
+            [sys.executable, "-m", "pipeconcord", "batch", "tests/fixtures/batch_manifest.tsv", "--format", "json"],
             check=True,
             capture_output=True,
             text=True,
@@ -54,7 +54,7 @@ class BatchCliTests(TestCase):
                 [
                     sys.executable,
                     "-m",
-                    "biocompare",
+                    "pipeconcord",
                     "batch",
                     "tests/fixtures/batch_manifest.tsv",
                     "--output",
@@ -74,7 +74,7 @@ class BatchCliTests(TestCase):
             [
                 sys.executable,
                 "-m",
-                "biocompare",
+                "pipeconcord",
                 "batch",
                 "tests/fixtures/batch_manifest.tsv",
                 "--min-concordance",
@@ -88,11 +88,11 @@ class BatchCliTests(TestCase):
 
     def test_cli_batch_outputs_html_summary(self):
         result = subprocess.run(
-            [sys.executable, "-m", "biocompare", "batch", "tests/fixtures/batch_manifest.tsv", "--format", "html"],
+            [sys.executable, "-m", "pipeconcord", "batch", "tests/fixtures/batch_manifest.tsv", "--format", "html"],
             check=True,
             capture_output=True,
             text=True,
         )
 
         self.assertIn("<!doctype html>", result.stdout)
-        self.assertIn("biocompare batch report", result.stdout)
+        self.assertIn("pipeconcord batch report", result.stdout)

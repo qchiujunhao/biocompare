@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-from biocompare.comparators.base import Comparator
-from biocompare.comparators.counts import parse_count_matrix, sample_columns_kwarg
-from biocompare.comparators.table import read_table
-from biocompare.core.report import ConcordanceReport
-from biocompare.core.utils import clamp01, jaccard, mean_absolute_error, numeric_similarity, pearson, spearman
-from biocompare.detection.filetype import detect_file_type
+from pipeconcord.comparators.base import Comparator
+from pipeconcord.comparators.counts import parse_count_matrix, sample_columns_kwarg
+from pipeconcord.comparators.table import read_table
+from pipeconcord.core.report import ConcordanceReport
+from pipeconcord.core.utils import clamp01, jaccard, mean_absolute_error, numeric_similarity, pearson, spearman
+from pipeconcord.detection.filetype import detect_file_type
 
 
 EXPRESSION_HINTS = {"tpm", "fpkm", "cpm", "expression", "expr", "normalized", "normalised"}

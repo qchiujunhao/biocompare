@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from collections.abc import Iterable
 
-from biocompare.comparators import register_builtin_comparators
-from biocompare.core.registry import ComparatorRegistry
-from biocompare.core.report import ConcordanceReport
+from pipeconcord.comparators import register_builtin_comparators
+from pipeconcord.core.registry import ComparatorRegistry
+from pipeconcord.core.report import ConcordanceReport
 
 
 class ComparisonEngine:
