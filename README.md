@@ -30,14 +30,41 @@ This repository currently implements the Phase 1 vertical slice:
 
 ## Quickstart
 
+Install from PyPI:
+
 ```bash
-python3 -m biocompare compare tests/fixtures/table_a.tsv tests/fixtures/table_b.tsv --key gene_id
+python3 -m pip install biocompare
+```
+
+The package is published at <https://pypi.org/project/biocompare/> and requires
+Python 3.10 or newer.
+
+Create two small TSV files:
+
+```bash
+cat > old.tsv <<'EOF'
+gene_id	value
+A	1.0
+B	2.0
+EOF
+
+cat > new.tsv <<'EOF'
+gene_id	value
+A	1.1
+B	2.0
+EOF
+```
+
+Compare them by `gene_id`:
+
+```bash
+biocompare compare old.tsv new.tsv --key gene_id
 ```
 
 Write a report to disk:
 
 ```bash
-python3 -m biocompare compare tests/fixtures/table_a.tsv tests/fixtures/table_b.tsv \
+biocompare compare old.tsv new.tsv \
   --key gene_id \
   --output report.json
 ```
@@ -45,7 +72,7 @@ python3 -m biocompare compare tests/fixtures/table_a.tsv tests/fixtures/table_b.
 Compare differential expression tables:
 
 ```bash
-python3 -m biocompare compare tests/fixtures/degs_tool_a.tsv tests/fixtures/degs_tool_b.tsv \
+biocompare compare old_de.tsv new_de.tsv \
   --type deg \
   --alpha 0.05
 ```
@@ -53,21 +80,21 @@ python3 -m biocompare compare tests/fixtures/degs_tool_a.tsv tests/fixtures/degs
 Compare count matrices:
 
 ```bash
-python3 -m biocompare compare tests/fixtures/counts_a.tsv tests/fixtures/counts_b.tsv \
+biocompare compare old_counts.tsv new_counts.tsv \
   --type counts
 ```
 
 Compare normalized expression matrices:
 
 ```bash
-python3 -m biocompare compare tests/fixtures/expression_tpm_a.tsv tests/fixtures/expression_tpm_b.tsv \
+biocompare compare old_tpm.tsv new_tpm.tsv \
   --type expression
 ```
 
 Compare BED intervals:
 
 ```bash
-python3 -m biocompare compare tests/fixtures/peaks_a.bed tests/fixtures/peaks_b.bed \
+biocompare compare old_peaks.bed new_peaks.bed \
   --type bed \
   --min-reciprocal-overlap 0.5
 ```
@@ -75,21 +102,21 @@ python3 -m biocompare compare tests/fixtures/peaks_a.bed tests/fixtures/peaks_b.
 Compare FASTA sequences:
 
 ```bash
-python3 -m biocompare compare tests/fixtures/sequences_a.fa tests/fixtures/sequences_b.fa \
+biocompare compare old_sequences.fa new_sequences.fa \
   --type fasta
 ```
 
 Compare VCF calls:
 
 ```bash
-python3 -m biocompare compare tests/fixtures/calls_a.vcf tests/fixtures/calls_b.vcf \
+biocompare compare old_calls.vcf new_calls.vcf \
   --type vcf
 ```
 
 Optionally provide a reference FASTA for simple repeated-indel left alignment:
 
 ```bash
-python3 -m biocompare compare calls_a.vcf calls_b.vcf \
+biocompare compare calls_a.vcf calls_b.vcf \
   --type vcf \
   --reference-fasta reference.fa
 ```
@@ -97,29 +124,14 @@ python3 -m biocompare compare calls_a.vcf calls_b.vcf \
 Compare alignment summary statistics:
 
 ```bash
-python3 -m biocompare compare tests/fixtures/flagstat_a.txt tests/fixtures/flagstat_b.txt \
+biocompare compare old_flagstat.txt new_flagstat.txt \
   --type bam_stats
-```
-
-Run the tests:
-
-```bash
-python3 -m unittest discover -s tests
-```
-
-Install development tooling:
-
-```bash
-python3 -m pip install -e ".[dev]"
-python3 -m ruff check .
-python3 -m coverage run -m unittest discover -s tests
-python3 -m coverage report
 ```
 
 Run a batch comparison from a manifest:
 
 ```bash
-python3 -m biocompare batch tests/fixtures/batch_manifest.tsv --format text
+biocompare batch manifest.tsv --format text
 ```
 
 The manifest must contain `file_a` and `file_b` columns. Optional columns are
@@ -129,19 +141,41 @@ Use `--min-concordance` in CI to fail when any comparison falls below a chosen
 threshold:
 
 ```bash
-python3 -m biocompare batch tests/fixtures/batch_manifest.tsv --min-concordance 0.95
+biocompare batch manifest.tsv --min-concordance 0.95
 ```
 
 Write an HTML report:
 
 ```bash
-python3 -m biocompare compare tests/fixtures/peaks_a.bed tests/fixtures/peaks_b.bed \
+biocompare compare old_peaks.bed new_peaks.bed \
   --type bed \
   --format html \
   --output report.html
 ```
 
 Batch reports also support `--format html`.
+
+## Development
+
+Install the repository in editable mode with development tools:
+
+```bash
+python3 -m pip install -e ".[dev]"
+```
+
+Run the tests:
+
+```bash
+python3 -m unittest discover -s tests
+```
+
+Run lint and coverage:
+
+```bash
+python3 -m ruff check .
+python3 -m coverage run -m unittest discover -s tests
+python3 -m coverage report
+```
 
 ## Plugin Model
 

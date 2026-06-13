@@ -19,8 +19,8 @@ Fields:
 from biocompare import ComparisonEngine
 
 report = ComparisonEngine().compare(
-    "tests/fixtures/degs_tool_a.tsv",
-    "tests/fixtures/degs_tool_b.tsv",
+    "old_de.tsv",
+    "new_de.tsv",
     file_type="deg",
     alpha=0.05,
 )
@@ -35,7 +35,7 @@ would be ambiguous.
 ```python
 from biocompare.core.batch import run_batch, batch_summary
 
-results = run_batch("tests/fixtures/batch_manifest.tsv")
+results = run_batch("manifest.tsv")
 summary = batch_summary(results)
 ```
 
@@ -57,4 +57,3 @@ html_text = report_to_html(report)
 
 Single reports support JSON, text, and HTML. Batch reports support JSON, TSV,
 text, and HTML.
-

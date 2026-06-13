@@ -3,7 +3,7 @@
 For lightweight VCF concordance:
 
 ```bash
-python3 -m biocompare compare caller_a.vcf caller_b.vcf --type vcf
+biocompare compare caller_a.vcf caller_b.vcf --type vcf
 ```
 
 The VCF comparator reports:

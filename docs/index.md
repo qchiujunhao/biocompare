@@ -24,10 +24,18 @@ comparisons.
 
 ## Common Commands
 
+Install from PyPI:
+
 ```bash
-python3 -m biocompare compare file_a.tsv file_b.tsv --type table --key gene_id
-python3 -m biocompare batch manifest.tsv --min-concordance 0.95
-python3 -m biocompare compare file_a.bed file_b.bed --type bed --format html --output report.html
+python3 -m pip install biocompare
+```
+
+PyPI package: <https://pypi.org/project/biocompare/>
+
+```bash
+biocompare compare file_a.tsv file_b.tsv --type table --key gene_id
+biocompare batch manifest.tsv --min-concordance 0.95
+biocompare compare file_a.bed file_b.bed --type bed --format html --output report.html
 ```
 
 ## Documentation
