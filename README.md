@@ -34,14 +34,21 @@ This repository currently implements the Phase 1 vertical slice:
 
 ## Quickstart
 
-Install from PyPI:
+Install the current renamed package from GitHub:
+
+```bash
+python3 -m pip install git+https://github.com/qchiujunhao/pipeconcord.git
+```
+
+The renamed PyPI package will be published at
+<https://pypi.org/project/pipeconcord/>. After that release is available, install
+with:
 
 ```bash
 python3 -m pip install pipeconcord
 ```
 
-The package is published at <https://pypi.org/project/pipeconcord/> and requires
-Python 3.10 or newer.
+PipeConcord requires Python 3.10 or newer.
 
 Create two small TSV files:
 
